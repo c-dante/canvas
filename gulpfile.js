@@ -65,9 +65,9 @@ gulp.task('test-cli', ['js'], function()
 		.pipe(mocha({reporter: 'nyan'}));
 });
 
-gulp.task('indicies', function(cb)
+gulp.task('html', function(cb)
 {
-	return gulp.src([config.dirs.app + '/*.html'])
+	return gulp.src([config.dirs.app + '/**/*.html'])
 		.pipe(gulp.dest(config.dirs.build));
 });
 
@@ -82,7 +82,7 @@ gulp.task('watch', function(cb)
 {
 	gulp.watch([config.dirs.app + '/**/*.js'], ['js']);
 	gulp.watch([config.dirs.app + '/**/*.{scss,css,kess}'], ['styles']);
-	gulp.watch([config.dirs.app + '/*.html'], ['indicies']);
+	gulp.watch([config.dirs.app + '/**/*.html'], ['html']);
 	cb();
 });
 
@@ -129,7 +129,7 @@ gulp.task('compile', ['compile-static'], function(cb)
 
 gulp.task('build', function(cb)
 {
-	return runSequence('clean', ['js', 'indicies', 'styles'], cb);
+	return runSequence('clean', ['js', 'html', 'styles'], cb);
 });
 
 gulp.task('default', function(cb)
