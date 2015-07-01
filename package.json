@@ -1,0 +1,31 @@
+{
+  "name": "gulp-boilerplate",
+  "version": "0.0.2",
+  "author": "Dante Federici <chris.d.federici@gmail.com",
+  "license": "MIT",
+  "description": "Starting place for gulp-built projects. Check branches for framework-specific setups (angular, node, ...)",
+  "dependencies": {
+    "lodash": "~3.9.3",
+    "style-loader": "~0.12.3",
+    "css-loader": "~0.14.4",
+    "node-sass": "~3.1.2",
+    "sass-loader": "~1.0.2"
+  },
+  "devDependencies": {
+    "merge-stream": "~0.1.7",
+    "yargs": "~3.10.0",
+    "gulp-jshint": "~1.11.0",
+    "jshint-stylish": "~2.0.0",
+    "chai": "~3.0.0",
+    "del": "~1.2.0",
+    "glob": "~5.0.10",
+    "gulp": "~3.9.0",
+    "gulp-file": "~0.2.0",
+    "gulp-mocha": "~2.1.1",
+    "run-sequence": "~1.1.0",
+    "lodash": "~3.9.3",
+    "node-libs-browser": "~0.5.2",
+    "webpack": "~1.9.10",
+    "webpack-dev-server": "~1.9.0"
+  }
+}
