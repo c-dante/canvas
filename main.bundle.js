@@ -81,15 +81,28 @@
 		var context = document.getElementById('main').getContext('2d');
 		var game = new Game(context);
 
-
 		var dt = 0;
+		var f;
 		window.setInterval(function()
 		{
-			game.tick(dt);
+			game.tick(dt, f);
 			game.draw();
 
 			dt += 2;
 		}, 50);
+
+		window.save = function()
+		{
+			var txt = document.getElementById('func').value;
+			try {
+				var z = new Function('x', 'y', 'dt', txt);
+				z(0, 0, 0);
+				f = z;
+			} catch (error)
+			{
+				document.getElementById('output').textContent = '' + error.message;
+			}
+		};
 
 		return {};
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -12443,14 +12456,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(7)();
-	// imports
-
-
-	// module
 	exports.push([module.id, "body {\n  font: 100% Ariel, sans-serif;\n  background-color: #9dcbe0; }\n\n.absolute-center {\n  margin: 0 auto; }\n\n/*# sourceMappingURL=bin/sass.map */", ""]);
-
-	// exports
-
 
 /***/ },
 /* 7 */
