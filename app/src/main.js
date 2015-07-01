@@ -21,15 +21,28 @@ define(function(require)
 	var context = document.getElementById('main').getContext('2d');
 	var game = new Game(context);
 
-
 	var dt = 0;
+	var f;
 	window.setInterval(function()
 	{
-		game.tick(dt);
+		game.tick(dt, f);
 		game.draw();
 
 		dt += 2;
 	}, 50);
+
+	window.save = function()
+	{
+		var txt = document.getElementById('func').value;
+		try {
+			var z = new Function('x', 'y', 'dt', txt);
+			z(0, 0, 0);
+			f = z;
+		} catch (error)
+		{
+			document.getElementById('output').textContent = '' + error.message;
+		}
+	};
 
 	return {};
 });

@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Webpack Boilerplate</title>
+	<title>Canvas is fun</title>
 	<script src="./main.bundle.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 
 <body>
-	<div class="absolute-center">
+	<section>
 		<canvas id="main" width="250" height="250"></canvas>
-	</div>
+	</section>
+
+	<section>
+		<p>Color Function. You have (x, y, dt) as params.</p>
+		<p>Assumes RGBA output.</p>
+		<button onclick="save();">Save</button>
+		<textarea id="func" cols="30" rows="10">return 0xFF000000 | (x * y + dt);</textarea>
+		<p id="output"></p>
+	</section>
 </body>
 </html>
