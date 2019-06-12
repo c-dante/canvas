@@ -1,11 +1,18 @@
-# Library + build tools
-bower_components
+# Build Artifacts
+dist
+
+# Dependencies
 node_modules
 
-# Build files
-build
-bin
+# IDE
+.tmp/
+.DS_Store
+.idea/
+*.sublime-*
 
-# IDE files
-*.sublime*
-.idea
+# Generated / Data files
+*.meta
+*.log
+
+# Optional REPL history
+.node_repl_history
