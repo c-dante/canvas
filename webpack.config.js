@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 
 /**
@@ -30,7 +30,7 @@ const splitChunks = {
 		},
 		styles: {
 			name: 'styles',
-			test: /\.css$/,
+			test: /\.(css|scss)$/,
 			chunks: 'all',
 			enforce: true
 		},
@@ -62,7 +62,7 @@ const buildPlugins = [
 
 	// Build the app
 	new HtmlWebpackPlugin({
-		title: 'Development Title',
+		title: 'Canvas',
 		chunksSortMode: 'dependency',
 		excludeChunks: [],
 		meta: {
@@ -144,14 +144,14 @@ module.exports = ({
 						'postcss-loader',
 					],
 				},
-//				{
-//					test: /\.scss$/,
-//					use: [
-//						production ? MiniCssExtractPlugin.loader : 'style-loader',
-//						'css-loader',
-//						'sass-loader',
-//					],
-//				},
+				{
+					test: /\.scss$/,
+					use: [
+						production ? MiniCssExtractPlugin.loader : 'style-loader',
+						'css-loader',
+						'sass-loader',
+					],
+				},
 				// js / babel
 				{
 					test: /\.m?js$/,

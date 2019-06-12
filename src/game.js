@@ -1,37 +1,27 @@
-'use strict';
+import _ from 'lodash';
 
-define(function(require)
-{
-	var _ = require('lodash');
-
-	var Game = function(canvasContext)
-	{
+export class Game {
+	constructor(canvasContext) {
 		this.ctx = canvasContext;
 		this.width = this.ctx.canvas.width;
 		this.height = this.ctx.canvas.height;
 
 		//this.img = new ImageData(this.width, this.height);
 		this.pixels = new Uint8ClampedArray(this.width * this.height * 4);
-	};
 
-	Game.prototype.tick = function(dt, f)
-	{
-		if (!f || !_.isFunction(f))
-		{
-			f = function(x, y, dt)
-			{
-				return 0xFF000000 | (x * y + dt);
-			}
-		}
+		this.get = (x, y, dt) => 0xFF000000 | (x * y + dt)
+	}
 
-		for (var x = 0; x < this.width; x++)
-		{
-			for (var y = 0; y < this.height; y++)
-			{
-				var i = (x + y * this.width) * 4;
+	tick(dt, f) {
+		for (let x = 0; x < this.width; x++) {
+			for (let y = 0; y < this.height; y++) {
+				const i = (x + y * this.width) * 4;
 
 				// ARGB
-				var c = f(x, y, dt);
+				let c = f(x, y, dt);
+				if (c | 0xFF000000 === 0) {
+					c |= 0xFF000000;
+				}
 
 				// R
 				this.pixels[i] = (c >> 16) & 0xFF;
@@ -43,12 +33,9 @@ define(function(require)
 				this.pixels[i + 3] = (c >> 24) & 0xFF;
 			}
 		}
-	};
+	}
 
-	Game.prototype.draw = function()
-	{
+	draw() {
 		this.ctx.putImageData(new ImageData(this.pixels, this.width, this.height), 0, 0);
-	};
-
-	return Game;
-});
+	}
+}

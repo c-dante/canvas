@@ -1,0 +1,14 @@
+section
+	canvas#main(width="250" height="250")
+	section
+		p Color Function. You have (x, y, dt) as params.
+		p Assumes RGBA output.
+		button(onclick="save();") Save
+		textarea#func(
+			cols="30"
+			rows="10"
+		)
+			| const a = dt * Math.sin(x);
+			| const b = dt * Math.cos(y);
+			| return a * b;
+		p#output
